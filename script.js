@@ -1,6 +1,16 @@
 // Write your JavaScript code here!
+let formSubmission = require('scriptHelper.js')
+
 
 window.addEventListener("load", function() {
+    let form = document.querySelector("form")
+        form.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+    })
+
+
+
 
    let listedPlanets;
    // Set listedPlanetsResponse equal to the value returned by calling myFetch()

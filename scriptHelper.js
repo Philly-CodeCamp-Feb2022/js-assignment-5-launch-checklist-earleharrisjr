@@ -23,17 +23,27 @@ if (testInput === ""){
 if (isNaN(testInput)){
     return "Not a Number"
 }
-if (testInput === Number);
+if (!isNan(testInput));
 return "Is a Number";
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-    // let pilot = document.querySelector("input[name=pilotName]").value;
-    // let copilot = document.querySelector("input[name=copilotName]").value;
-    // let fuelLevel = document.querySelector("input[name=fuelLevel]").value;
-    // let cargoLevel = document.querySelector("input[name=cargoMass]").value;
-    // if (validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoLevel) === "Empty")
-    
+    let pilotStatus =  document.getElementById("pilotStatus");
+    let copilotStatus = document.getElementById("coPilotStatus");
+    let pilotName = pilot.value
+    //below is the pilot / co pilot
+    if (validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoLevel) === "Empty"){
+        window.alert("Please enter data in every field to continue.")
+    }
+    else if (validateInput(pilot.value) === "Is a Number" || validateInput(copilot.value) === "Is a Number"){
+        window.alert("A number is not a name! Pilot and co-pilot must be a name.")
+    } else {
+        pilotStatus.innerHTML = `${pilot.value} is ready!`;
+        pilotStatus = style.visibility = 'visible';
+        copilotStatus.innerHTML = `${copilot.value} is ready!`;
+        copilotStatus.style.visibility = 'visible';
+    }
+    //above this line is the pilot / co pilot
 }
 
 async function myFetch() {

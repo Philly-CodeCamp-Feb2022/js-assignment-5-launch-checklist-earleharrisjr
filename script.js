@@ -1,10 +1,17 @@
 // Write your JavaScript code here!
-let formSubmission = require('scriptHelper.js')
+// let formSubmission = require('scriptHelper.js')
 
 
 window.addEventListener("load", function() {
     let form = document.querySelector("form")
         form.addEventListener("submit", function(event) {
+        let userInputPilot = document.querySelector("input[name=pilotName]");
+        let userInputCoPilot = document.querySelector("input[name=copilotName]");
+        let userInputFuelLevel = document.querySelector("input[name=fuelLevel]");
+        let userInputCargoMass = document.querySelector("input[name=cargoMass]");
+        if (validateInput(userInputPilot) === Empty){
+            
+        }
         event.preventDefault();
 
     })

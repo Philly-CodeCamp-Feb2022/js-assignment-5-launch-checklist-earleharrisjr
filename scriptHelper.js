@@ -17,39 +17,46 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 }
 
 function validateInput(testInput) {
-if (testInput === ""){
-    return "Empty"
-};
-if (isNaN(testInput)){
-    return "Not a Number"
-}
-if (!isNan(testInput));
-return "Is a Number";
+ if (testInput === "") {
+    return "Empty"};
+
+if (isNaN(testInput)) {
+    return "Not a Number"};
+
+if (!isNaN(testInput)) {
+    return "Is a Number"};
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-    let pilotStatus =  document.getElementById("pilotStatus");
-    let copilotStatus = document.getElementById("coPilotStatus");
-    let pilotName = pilot.value
-    //below is the pilot / co pilot
-    if (validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoLevel) === "Empty"){
-        window.alert("Please enter data in every field to continue.")
-    }
-    else if (validateInput(pilot.value) === "Is a Number" || validateInput(copilot.value) === "Is a Number"){
-        window.alert("A number is not a name! Pilot and co-pilot must be a name.")
-    } else {
-        pilotStatus.innerHTML = `${pilot.value} is ready!`;
-        pilotStatus = style.visibility = 'visible';
-        copilotStatus.innerHTML = `${copilot.value} is ready!`;
-        copilotStatus.style.visibility = 'visible';
-    }
-    //above this line is the pilot / co pilot
+    // document.getElementById("pilotStatus").innerHTML = `Pilot ${userInputPilot.value} is ready!`
+    // document.getElementById("pilotStatus").innerHTML = `Co-Pilot ${userInputCoPilot.value} is ready!`
+    // if (Number(userInputFuelLevel.value) < 10000){
+    // document.getElementById("fuelStatus").style.color="red"
+    // document.getElementById("fuelStatus").innerHTML="Shuttle not ready for launch. Fuel is too low."}
+    // else {
+    //     document.getElementById("fuelStatus").style.color="green";
+    // }
+
+    // if (Number(userInputCargoMass.value) > 10000){
+    //     document.getElementById("cargoStatus").style.color="red"
+    //     document.getElementById("cargoStatus").innerHTML="Shuttle not ready for launch. Cargo Mass is too high."}   
+    //     else {
+    //         document.getElementById("cargoStatus").style.color="green";}
+
 }
 
 async function myFetch() {
     let planetsReturned;
 
-    planetsReturned = await fetch().then( function(response) {
+    planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json"
+    ).then( function(response) {
+        if (response.status >= 400) {
+            throw new Error ("Bad response");
+        }
+        else {
+            return response.json();
+        }
+
         });
 
     return planetsReturned;
